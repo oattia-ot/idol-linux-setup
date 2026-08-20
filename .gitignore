@@ -1,0 +1,22 @@
+# Auto-created by Push-Version.ps1 -- see docs/PUSH-VERSION.md sec. 7.
+# Keeps large component packages, installers, and runtime output out of git,
+# which is the #1 cause of push timeouts / HTTP 408 on this repo.
+
+# Packages / binaries (component ZIPs, JDK installers, etc.)
+*.zip
+*.msi
+*.exe
+
+# Runtime / secrets
+logs/
+ssl/
+env/
+*.log
+
+# Generated NiFi extension NARs (re-extracted from NiFiIngest ZIP on demand)
+nifi/nifi-connectors/*.nar
+
+# Python
+__pycache__/
+*.pyc
+.venv/

@@ -1,0 +1,550 @@
+[
+  {
+    "file": "config/cfg/answerserver/rag/grok.lua",
+    "replacements": [
+      {
+        "from": "YOUR_AI_LLM_PROVIDER_KEY",
+        "to": "YOUR_REAL_GROK_API_KEY_HERE"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerserver/rag/grok.py",
+    "replacements": [
+      {
+        "from": "YOUR_AI_LLM_PROVIDER_KEY",
+        "to": "YOUR_REAL_GROK_API_KEY_HERE"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerserver/rag/grok/grok4.py",
+    "replacements": [
+      {
+        "from": "YOUR_AI_LLM_PROVIDER_KEY",
+        "to": "YOUR_REAL_GROK_API_KEY_HERE"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/agentstore/agentstore.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9052",
+        "to": "ServicePort=9052",
+        "component": "Agentstore",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9050",
+        "to": "Port=9050",
+        "component": "Agentstore"
+      },
+      {
+        "from": "IndexPort=9051",
+        "to": "IndexPort=9051",
+        "component": "Agentstore",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/agentstore/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerbank-agentstore/agentstore.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9452",
+        "to": "ServicePort=9452",
+        "component": "AnswerBankAgentStore",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9450",
+        "to": "Port=9450",
+        "component": "AnswerBankAgentStore"
+      },
+      {
+        "from": "IndexPort=9451",
+        "to": "IndexPort=9451",
+        "component": "AnswerBankAgentStore",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerbank-agentstore/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerserver/answerserver.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      },
+      {
+        "from": "ServicePort=12002",
+        "to": "ServicePort=12002",
+        "component": "AnswerServer",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=12000",
+        "to": "Port=12000",
+        "component": "AnswerServer"
+      },
+      {
+        "from": "IdolAciPort=9450",
+        "to": "IdolAciPort=9450",
+        "component": "AnswerBankAgentStore"
+      },
+      {
+        "from": "IDOLACIPort=9100",
+        "to": "IDOLACIPort=9100",
+        "component": "Content"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/category/category.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9022",
+        "to": "ServicePort=9022",
+        "component": "Category",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9020",
+        "to": "Port=9020",
+        "component": "Category"
+      },
+      {
+        "from": "Port=9030",
+        "to": "Port=9030",
+        "component": "Community"
+      },
+      {
+        "from": "aciport=9100",
+        "to": "aciport=9100",
+        "component": "Content",
+        "section": "DataDre"
+      },
+      {
+        "from": "aciport=9050",
+        "to": "aciport=9050",
+        "component": "Agentstore",
+        "section": "CatDRE"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/category/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/community/community.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9032",
+        "to": "ServicePort=9032",
+        "component": "Community",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9030",
+        "to": "Port=9030",
+        "component": "Community"
+      },
+      {
+        "from": "aciport=9100",
+        "to": "aciport=9100",
+        "component": "Content",
+        "section": "DataDre"
+      },
+      {
+        "from": "aciport=9050",
+        "to": "aciport=9050",
+        "component": "Agentstore",
+        "section": "AgentDre"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/community/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/content/content.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9102",
+        "to": "ServicePort=9102",
+        "component": "Content",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9100",
+        "to": "Port=9100",
+        "component": "Content"
+      },
+      {
+        "from": "IndexPort=9101",
+        "to": "IndexPort=9101",
+        "component": "Content",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/content/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/conversation-agentstore/agentstore.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9552",
+        "to": "ServicePort=9552",
+        "component": "ConversationAgentStore",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9550",
+        "to": "Port=9550",
+        "component": "ConversationAgentStore"
+      },
+      {
+        "from": "IndexPort=9551",
+        "to": "IndexPort=9551",
+        "component": "ConversationAgentStore",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/conversation-agentstore/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/qms/qms.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=16002",
+        "to": "ServicePort=16002",
+        "component": "QMS",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=16000",
+        "to": "Port=16000",
+        "component": "QMS"
+      },
+      {
+        "from": "Port=9100",
+        "to": "Port=9100",
+        "component": "Content"
+      },
+      {
+        "from": "Port=9030",
+        "to": "Port=9030",
+        "component": "Community"
+      },
+      {
+        "from": "Port=9150",
+        "to": "Port=9150",
+        "component": "QMSAgentStore"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/qms/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/qmsagentstore/agentstore.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9152",
+        "to": "ServicePort=9152",
+        "component": "QMSAgentStore",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9150",
+        "to": "Port=9150",
+        "component": "QMSAgentStore"
+      },
+      {
+        "from": "IndexPort=9151",
+        "to": "IndexPort=9151",
+        "component": "QMSAgentStore",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/qmsagentstore/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/statsserver/statsserver.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=19872",
+        "to": "ServicePort=19872",
+        "component": "StatsServer",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=19870",
+        "to": "Port=19870",
+        "component": "StatsServer"
+      },
+      {
+        "from": "EventPort=19871",
+        "to": "EventPort=19871",
+        "component": "StatsServer",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/statsserver/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/view/view.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9082",
+        "to": "ServicePort=9082",
+        "component": "View",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9080",
+        "to": "Port=9080",
+        "component": "View"
+      },
+      {
+        "from": "IDOLPort=9100",
+        "to": "IDOLPort=9100",
+        "component": "Content"
+      },
+      {
+        "from": "DocumentStorePort=9100",
+        "to": "DocumentStorePort=9100",
+        "component": "Content"
+      },
+      {
+        "from": "DistributedConnectorPort=10000",
+        "to": "DistributedConnectorPort=10000"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/view/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerbankagentstore/agentstore.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9452",
+        "to": "ServicePort=9452",
+        "component": "AnswerBankAgentStore",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9450",
+        "to": "Port=9450",
+        "component": "AnswerBankAgentStore"
+      },
+      {
+        "from": "IndexPort=9451",
+        "to": "IndexPort=9451",
+        "component": "AnswerBankAgentStore",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/answerbankagentstore/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/conversationagentstore/agentstore.cfg",
+    "replacements": [
+      {
+        "from": "ServicePort=9552",
+        "to": "ServicePort=9552",
+        "component": "ConversationAgentStore",
+        "portOffset": 2
+      },
+      {
+        "from": "Port=9550",
+        "to": "Port=9550",
+        "component": "ConversationAgentStore"
+      },
+      {
+        "from": "IndexPort=9551",
+        "to": "IndexPort=9551",
+        "component": "ConversationAgentStore",
+        "portOffset": 1
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/conversationagentstore/idol.common.cfg",
+    "replacements": [
+      {
+        "from": "LicenseServerACIPort=20000",
+        "to": "LicenseServerACIPort=20000",
+        "component": "LicenseServer"
+      }
+    ]
+  },
+  {
+    "file": "config/cfg/find/config.json",
+    "replacements": [
+      {
+        "from": "\"port\" : 9030",
+        "to": "\"port\" : 9030",
+        "component": "Community"
+      },
+      {
+        "from": "\"port\" : 9100",
+        "to": "\"port\" : 9100",
+        "component": "Content"
+      },
+      {
+        "from": "\"port\" : 16000",
+        "to": "\"port\" : 16000",
+        "component": "QMS"
+      },
+      {
+        "from": "\"port\" : 10000",
+        "to": "\"port\" : 10000"
+      },
+      {
+        "from": "\"port\" : 9080",
+        "to": "\"port\" : 9080",
+        "component": "View"
+      },
+      {
+        "from": "\"port\" : 7700",
+        "to": "\"port\" : 7700"
+      },
+      {
+        "from": "\"port\" : 9050",
+        "to": "\"port\" : 9050",
+        "component": "Agentstore"
+      },
+      {
+        "from": "\"port\" : 80",
+        "to": "\"port\" : 80"
+      },
+      {
+        "from": "\"port\" : 19120",
+        "to": "\"port\" : 19120"
+      },
+      {
+        "from": "\"port\" : 19870",
+        "to": "\"port\" : 19870",
+        "component": "StatsServer"
+      }
+    ]
+  },
+  {
+    "file": "nifi/conf/nifi.properties",
+    "replacements": [
+      {
+        "from": "nifi.web.https.host=NIFI_WEB_HTTPS_HOST",
+        "to": "nifi.web.https.host=0.0.0.0"
+      },
+      {
+        "from": "nifi.web.https.port=NIFI_WEB_HTTPS_PORT",
+        "to": "nifi.web.https.port=8443"
+      },
+      {
+        "from": "nifi.web.proxy.host=localhost:NIFI_WEB_HTTPS_PORT,NIFI_WEB_HTTPS_HOST:NIFI_WEB_HTTPS_PORT,EXTRA_IP_SANS:NIFI_WEB_HTTPS_PORT",
+        "to": "nifi.web.proxy.host=EXTRA_IP_SANS:8443,localhost:8443,0.0.0.0:8443,127.0.0.1:8443"
+      },
+      {
+        "from": "EXTRA_IP_SANS",
+        "to": "127.0.0.1"
+      }
+    ]
+  }
+]

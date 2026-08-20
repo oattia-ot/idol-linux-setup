@@ -1,0 +1,156 @@
+{
+  "BasePath": "/opt/KnowledgeDiscovery",
+  "SetupPath": "/home/azureuser/new-backup-setup/idol-linux-setup",
+  "ZipPath": "/home/azureuser/new-backup-setup/zip-folder",
+  "LicenseHost": "localhost",
+  "LicensePort": "20000",
+  "LicenseKeyPath": "/home/azureuser/new-backup-setup/license-server/licensekey.dat",
+  "ThisHost": "localhost",
+  "IndexPath": "/opt/KnowledgeDiscovery/Indexes",
+  "Components": [
+    "LicenseServer",
+    "Content",
+    "Community",
+    "Category",
+    "Agentstore",
+    "View",
+    "QMSAgentStore",
+    "AnswerBankAgentStore",
+    "ConversationAgentStore",
+    "QMS",
+    "AnswerServer",
+    "StatsServer",
+    "Find",
+    "NiFi"
+  ],
+  "EnvironmentType": "Linux",
+  "InstallService": true,
+  "StartMode": "Auto",
+  "Ports": {
+    "Content": "9100",
+    "Category": "9020",
+    "Community": "9030",
+    "Agentstore": "9050",
+    "QMSAgentStore": "9150",
+    "AnswerBankAgentStore": "9450",
+    "ConversationAgentStore": "9550",
+    "QMS": "16000",
+    "AnswerServer": "12000",
+    "StatsServer": "19870",
+    "View": "9080",
+    "LicenseServer": "20000",
+    "NiFi": "8443",
+    "Find": "8080"
+  },
+  "NiFi": {
+    "HeapXms": "2g",
+    "HeapXmx": "4g",
+    "SensitivePropsKey": "ChangeMe-StrongPassword123!",
+    "WebHttpsPort": "8443",
+    "Username": "admin",
+    "Password": "ChangeMe-AdminPassword123!",
+    "VersionHint": "2.10.0",
+    "AutoDownload": true,
+    "AutoInstallJava": true,
+    "InstallService": true,
+    "NarExtensions": [
+      "idol-nifi-autocategorize_processor-nar-26.3.0.nar",
+      "idol-nifi-embedded_content_processor-nar-26.3.0-nifi2.nar",
+      "idol-nifi-framework-api-nar-26.3.0-nifi2.nar",
+      "idol-nifi-framework-nar-26.3.0-nifi2.nar"
+    ],
+    "WebHttpsHost": "0.0.0.0",
+    "ExternalIIPSAN": ""
+  },
+  "Find": {
+    "HeapXms": "1g",
+    "HeapXmx": "2g",
+    "ServerPort": "8080",
+    "HomeDir": "home",
+    "VersionHint": "26.2.0",
+    "AutoInstallJava": true,
+    "InstallService": true
+  },
+  "ServiceInstallArgsTemplate": [
+    "-install",
+    "-start",
+    "{StartMode}",
+    "-servicename",
+    "{ServiceName}",
+    "-displayname",
+    "{DisplayName}"
+  ],
+  "ServiceUninstallArgsTemplate": [
+    "-remove",
+    "-servicename",
+    "{ServiceName}"
+  ],
+  "BrowserUrls": {
+    "LicenseServer": {
+      "Status": "http://localhost:20000/a=getlicenseinfo",
+      "Admin UI": "http://localhost:20000/action=admin",
+      "Service Log": "http://localhost:20000/action=grl"
+    },
+    "Content": {
+      "Admin UI": "http://localhost:9100/action=admin",
+      "Status": "http://localhost:9100/action=getstatus",
+      "Service Log": "http://localhost:9100/action=grl"
+    },
+    "Community": {
+      "Admin UI": "http://localhost:9030/action=admin",
+      "Service Log": "http://localhost:9030/action=grl",
+      "Status": "http://localhost:9030/action=getstatus"
+    },
+    "Category": {
+      "Admin UI": "http://localhost:9020/action=admin",
+      "Service Log": "http://localhost:9020/action=grl",
+      "Status": "http://localhost:9020/action=getstatus"
+    },
+    "Agentstore": {
+      "Admin UI": "http://localhost:9050/action=admin",
+      "Service Log": "http://localhost:9050/action=grl",
+      "Status": "http://localhost:9050/action=getstatus"
+    },
+    "View": {
+      "Status": "http://localhost:9080/action=getstatus",
+      "Service Log": "http://localhost:9080/action=grl",
+      "Admin UI": "http://localhost:9080/action=admin"
+    },
+    "QMSAgentStore": {
+      "Admin UI": "http://localhost:9150/action=admin",
+      "Service Log": "http://localhost:9150/action=grl",
+      "Status": "http://localhost:9150/action=getstatus"
+    },
+    "AnswerBankAgentStore": {
+      "Admin UI": "http://localhost:9450/action=admin",
+      "Service Log": "http://localhost:9450/action=grl"
+    },
+    "ConversationAgentStore": {
+      "Admin UI": "http://localhost:9550/action=admin",
+      "Service Log": "http://localhost:9550/action=grl",
+      "Status": "http://localhost:9550/action=getstatus"
+    },
+    "QMS": {
+      "Admin UI": "http://localhost:16000/action=admin",
+      "Service Log": "http://localhost:16000/action=grl",
+      "Status": "http://localhost:16000/action=getstatus"
+    },
+    "AnswerServer": {
+      "Admin UI": "http://localhost:12000/action=admin",
+      "Service Log": "http://localhost:12000/action=grl",
+      "Status": "http://localhost:12000/action=getstatus"
+    },
+    "StatsServer": {
+      "Status": "http://localhost:19870/action=getstatus",
+      "Service Log": "http://localhost:19870/action=grl",
+      "Admin UI": "http://localhost:19870/action=admin"
+    },
+    "Find": {
+      "UI": "http://localhost:8080/"
+    },
+    "NiFi": {
+      "Login": "https://localhost:8443/nifi",
+      "Diagnostics": "https://localhost:8443/nifi-api/system-diagnostics"
+    }
+  }
+}

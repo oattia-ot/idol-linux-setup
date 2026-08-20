@@ -1,0 +1,113 @@
+import logging
+import os
+import requests
+import json
+from logging.handlers import RotatingFileHandler
+
+# --- CONFIGURATION ---
+LOG_DIR = r"E:\\Knowledge Discovery\\AnswerServer\\AnswerServer_25.2.0_WINDOWS_X86_64\\logs\\custom"
+LOG_FILE = os.path.join(LOG_DIR, "grok_railway_qa.log")
+
+# Ensure log directory exists
+os.makedirs(LOG_DIR, exist_ok=True)
+
+# --- SETUP LOCAL FILE + CONSOLE LOGGER ONLY ---
+logger = logging.getLogger("grok-railway-qa")
+logger.setLevel(logging.DEBUG)  # Capture everything
+
+# Prevent adding handlers multiple times (critical in NiFi/IDOL)
+if not logger.handlers:
+    # 1. ROTATING FILE HANDLER (main log destination)
+    file_handler = RotatingFileHandler(
+        LOG_FILE,
+        maxBytes=5_000_000,      # 5 MB per file
+        backupCount=10,          # Keep 10 old logs
+        encoding='utf-8'
+    )
+    file_formatter = logging.Formatter(
+        '%(asctime)s | %(levelname)-8s | %(filename)s:%(lineno)d | %(message)s'
+    )
+    file_handler.setFormatter(file_formatter)
+    file_handler.setLevel(logging.DEBUG)
+    logger.addHandler(file_handler)
+
+    # 2. CONSOLE HANDLER (for immediate visibility when running locally)
+    console_handler = logging.StreamHandler()
+    console_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    console_handler.setFormatter(console_formatter)
+    console_handler.setLevel(logging.INFO)
+    logger.addHandler(console_handler)
+
+    logger.info("LOCAL FILE + CONSOLE LOGGING INITIALIZED")
+    logger.info(f"Log file: {LOG_FILE}")
+    logger.debug("Debug mode active – all details will be written to log file")
+
+# --- CONSTANTS ---
+API_KEY = "YOUR_AI_LLM_PROVIDER_KEY"
+
+# --- MAIN GENERATE FUNCTION ---
+def generate(prompt: str) -> str:
+    logger.debug(f"generate() called – prompt length: {len(prompt)} characters")
+    logger.debug(f"Prompt preview: {prompt[:500]}{'...' if len(prompt) > 500 else ''}")
+
+    try:
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {API_KEY}"
+        }
+
+        data = {
+            "messages": [
+                {"role": "system", "content": "You are an expert railway electrical engineer. Answer precisely using only the provided drawing context."},
+                {"role": "user", "content": prompt}
+            ],
+            "model": "grok-4-fast-reasoning",
+            "stream": False,
+            "temperature": 0.0,
+            "max_tokens": 10000
+        }
+
+        logger.info("Sending request to xAI Grok API...")
+        response = requests.post(
+            "https://api.x.ai/v1/chat/completions",
+            headers=headers,
+            json=data,
+            timeout=3600
+        )
+
+        logger.info(f"API Response: {response.status_code} {response.reason}")
+        logger.debug(f"Response headers: {dict(response.headers)}")
+
+        response.raise_for_status()
+        result = response.json()
+
+        if "choices" not in result or not result["choices"]:
+            logger.error("API returned no 'choices'")
+            raise ValueError("Invalid response from Grok API")
+
+        content = result["choices"][0]["message"]["content"]
+        logger.info(f"Answer received – {len(content)} characters")
+        logger.debug(f"Answer preview: {content[:500]}")
+
+        return content
+
+    except requests.exceptions.RequestException as e:
+        logger.error(f"HTTP/network error: {e}", exc_info=True)
+        raise
+    except Exception as e:
+        logger.error(f"Unexpected error in generate(): {e}", exc_info=True)
+        raise
+
+# --- TOKEN LIMIT HELPER ---
+def get_token_count(text: str, token_limit: int):
+    logger.debug(f"get_token_count called – original text length: {len(text)}")
+    words = text.split()
+    limited_text = ' '.join(words[:token_limit])
+    actual_count = len(words)
+    logger.debug(f"Text limited to {token_limit} words → result length: {len(limited_text)}, total words were {actual_count}")
+    return limited_text, actual_count
+
+# --- Test on load (optional) ---
+if __name__ == "__main__":
+    logger.info("Script loaded successfully – logging to local file only")
+    logger.info(f"Log location: {LOG_FILE}")

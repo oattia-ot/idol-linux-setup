@@ -1,0 +1,400 @@
+{
+  "login" : {
+    "name" : "CommunityAuthentication",
+    "defaultLogin" : {
+      "username" : "admin",
+      "password" : "admin"
+    },
+    "community" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 9030
+    },
+    "method" : "default"
+  },
+  "content" : {
+    "protocol" : "HTTP",
+    "host" : "localhost",
+    "port" : 9100
+  },
+  "referenceField" : "DREREFERENCE",
+  "queryManipulation" : {
+    "server" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 16000
+    },
+    "expandQuery" : true,
+    "synonymDatabaseMatch" : true,
+    "explicitProfiling" : true,
+    "blacklist" : "ISO_BLACKLIST",
+    "typeAheadMode" : "Index",
+    "enabled" : false
+  },
+  "view" : {
+    "connector" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 10000
+    },
+    "referenceField" : "DREREFERENCE",
+    "viewingMode" : "FIELD",
+    "highlighting" : true,
+    "host" : "localhost",
+    "port" : 9080,
+    "protocol" : "HTTP"
+  },
+  "answerServer" : {
+    "server" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 12000
+    },
+    "systemNames" : [ ],
+    "enabled" : false,
+    "conversationSystemName" : null
+  },
+  "communityAgentStore" : {
+    "enabled" : false,
+    "server" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 9050
+    }
+  },
+  "entitySearch" : {
+    "server" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 9050
+    },
+    "enabled" : false,
+    "absWeight" : null,
+    "agentBooleanField" : "AGENTBOOL",
+    "combine" : "FieldCheck",
+    "idolPrintFields" : [ "WIKIPEDIA_ENG", "WIKIPEDIA_IMAGE", "PERSON_DATE_OF_BIRTH", "PERSON_DATE_OF_DEATH", "PERSON_PROFESSION", "WIKIPEDIA_IMAGE", "LAT", "LON", "PLACE_COUNTRY_CODE", "PLACE_REGION1", "PLACE_POPULATION", "PLACE_TIMEZONE", "WIKIPEDIA_IMAGE", "URL_HOMEPAGE", "COMPANY_GOOGLE" ],
+    "answerServer" : {
+      "server" : {
+        "protocol" : "HTTP",
+        "host" : "localhost",
+        "port" : 7700
+      },
+      "systemNames" : [ ],
+      "enabled" : false,
+      "conversationSystemName" : null
+    },
+    "answerServerDatabaseMatch" : "Wikipedia",
+    "answerServerContentField" : "DRECONTENT",
+    "answerServerTimeoutSecs" : -1.0,
+    "databaseChoices" : null,
+    "databaseChoicesVisible" : true
+  },
+  "controlPoint" : {
+    "enabled" : false,
+    "server" : {
+      "protocol" : "HTTPS",
+      "host" : "localhost",
+      "port" : 80,
+      "credentials" : null,
+      "basePath" : "/WebApi/api"
+    }
+  },
+  "nifi" : {
+    "enabled" : false,
+    "server" : {
+      "protocol" : "HTTPS",
+      "host" : "localhost",
+      "port" : 8443
+    },
+    "listAction" : "listactions"
+  },
+  "savedSearches" : {
+    "pollForUpdates" : true,
+    "pollingInterval" : 5,
+    "sharingEnabled" : true
+  },
+  "mmap" : {
+    "enabled" : false,
+    "baseUrl" : ""
+  },
+  "messageOfTheDay" : {
+    "message" : null,
+    "cssClass" : null
+  },
+  "uiCustomization" : {
+    "options" : {
+      "enableTypeAhead" : {
+        "bi" : true,
+        "user" : true
+      },
+      "enableDashboards" : {
+        "bi" : true,
+        "user" : false
+      },
+      "enableIndexesFilter" : {
+        "bi" : true,
+        "user" : true
+      },
+      "enableDatesFilter" : {
+        "bi" : true,
+        "user" : true
+      },
+      "enableGeographyFilter" : {
+        "bi" : true,
+        "user" : true
+      },
+      "enableDocumentSelectionFilter" : {
+        "bi" : true,
+        "user" : true
+      },
+      "enableSideBar" : {
+        "bi" : true,
+        "user" : false
+      },
+      "enableMetaFilter" : {
+        "bi" : true,
+        "user" : false
+      },
+      "enableRelatedConcepts" : {
+        "bi" : false,
+        "user" : true
+      },
+      "resultViewOrder" : {
+        "bi" : [ "topic-map", "list", "sunburst", "trending", "table", "map", "recommendation" ],
+        "user" : [ "list" ]
+      },
+      "enableSavedSearch" : {
+        "bi" : true,
+        "user" : false
+      }
+    },
+    "filterOrder" : [ "metaFilter", "indexesFilter", "datesFilter", "geographyFilter", "documentSelectionFilter", "-", "parametricFilter" ],
+    "defaultDeselectedDatabases" : [ ],
+    "parametricNeverShow" : [ ],
+    "parametricAlwaysShow" : [ ],
+    "parametricOrder" : [ ],
+    "specialUrlPrefixes" : {
+      "application/msword" : "ms-word:ofv|u|",
+      "application/mspowerpoint" : "ms-powerpoint:ofv|u|",
+      "application/vnd.ms-powerpoint" : "ms-powerpoint:ofv|u|",
+      "application/msexcel" : "ms-excel:ofv|u|",
+      "application/vnd.ms-excel" : "ms-excel:ofv|u|",
+      "application/vnd.visio" : "ms-visio:ofv|u|",
+      "application/msaccess" : "ms-access:ofv|u|",
+      "application/x-msaccess" : "ms-access:ofv|u|",
+      "application/msproject" : "ms-project:ofv|u|",
+      "application/vnd.ms-project" : "ms-project:ofv|u|",
+      "application/x-mspublisher" : "ms-publisher:ofv|u|"
+    },
+    "previewWhitelistUrls" : {
+      "^(https?://)?www\\.youtube(-nocookie)?\\.com/embed/.*" : "<iframe class=\"preview-document-frame\" allow=\"autoplay; encrypted-media\" allowfullscreen src=\"<%-reference%>\">",
+      "^(https?://)?www\\.facebook\\.com/plugins/.*" : "<iframe class=\"preview-document-frame\" allow=\"autoplay; encrypted-media\" allowfullscreen src=\"<%-reference%>\">",
+      "^(https?://)?video\\.xx\\.fbcdn\\.net/.*" : "<iframe class=\"preview-document-frame\" allow=\"autoplay; encrypted-media\" allowfullscreen src=\"<%-reference%>\">",
+      "^(https?:\\/\\/)?www.youtube.com\\/watch(.*?)[?&]v=([^&?]+)(.*)" : "<iframe class=\"preview-document-frame\" allow=\"autoplay; encrypted-media\" allowfullscreen src=\"https://www.youtube-nocookie.com/embed/<%-match[3]%>?<%-match[2]%><%-match[4]%>\">"
+    },
+    "errorCallSupportString" : null,
+    "openSharedDashboardQueryAsNewSearch" : false,
+    "parametricValuesSort" : "DocumentCount",
+    "profile" : {
+      "intentBasedRanking" : false,
+      "maxProfiles" : 3,
+      "maxResultsPerProfile" : 2,
+      "maxTerms" : 30,
+      "highlightTerms" : true,
+      "updateProfileOnView" : false
+    },
+    "listViewPagingSize" : 30,
+    "fetchOnDemand" : false
+  },
+  "idolFieldPathNormalizerXMLPrefixes" : [ "DOCUMENTS" ],
+  "fieldsInfo" : {
+    "contentType" : {
+      "names" : [ "AU_REPOSITORY_METADATA_TYPE_STRING", "REPOSITORY_METADATA_TYPE_STRING" ],
+      "values" : [ ]
+    },
+    "url" : {
+      "names" : [ "REPOSITORY_METADATA_URL_FILE_STRING", "AU_REPOSITORY_METADATA_URL_FILE_STRING" ],
+      "values" : [ ]
+    },
+    "offset" : {
+      "advanced" : true,
+      "names" : [ "OFFSET" ],
+      "values" : [ ]
+    },
+    "authors" : {
+      "names" : [ "AU_DOCUMENT_METADATA_AUTHOR_STRING", "DOCUMENT_METADATA_AUTHOR_STRING" ],
+      "values" : [ ]
+    },
+    "categories" : {
+      "names" : [ "AU_REPOSITORY_METADATA_CATEGORY_STRING", "REPOSITORY_METADATA_CATEGORY_STRING" ],
+      "values" : [ ]
+    },
+    "dateCreated" : {
+      "type" : "date",
+      "names" : [ "DOCUMENT_METADATA_DATE_CREATED_EPOCHSECONDS", "AU_DOCUMENT_METADATA_DATE_CREATED_EPOCHSECONDS" ],
+      "values" : [ ]
+    },
+    "dateModified" : {
+      "type" : "date",
+      "names" : [ "DOCUMENT_METADATA_DATE_MODIFIED_EPOCHSECONDS", "AU_DOCUMENT_METADATA_DATE_MODIFIED_EPOCHSECONDS" ],
+      "values" : [ ]
+    },
+    "mmapEventSourceType" : {
+      "advanced" : true,
+      "names" : [ "MMAP_EVENT_SOURCE_TYPE" ],
+      "values" : [ ]
+    },
+    "mmapEventSourceName" : {
+      "advanced" : true,
+      "names" : [ "MMAP_EVENT_SOURCE_NAME" ],
+      "values" : [ ]
+    },
+    "mmapEventTime" : {
+      "advanced" : true,
+      "names" : [ "MMAP_EVENT_TIME" ],
+      "values" : [ ]
+    },
+    "mmapUrl" : {
+      "advanced" : true,
+      "names" : [ "MMAP_PROXY_URL" ],
+      "values" : [ ]
+    },
+    "thumbnail" : {
+      "advanced" : true,
+      "names" : [ "PREVIEW_THUMBNAIL_BASE64" ],
+      "values" : [ ]
+    },
+    "thumbnailUrl" : {
+      "advanced" : true,
+      "names" : [ "THUMBNAIL_URL" ],
+      "values" : [ ]
+    },
+    "sourceType" : {
+      "advanced" : true,
+      "names" : [ "SOURCETYPE" ],
+      "values" : [ ]
+    },
+    "transcript" : {
+      "advanced" : true,
+      "names" : [ "TRANSCRIPTION_CONTENT" ],
+      "values" : [ ]
+    },
+    "latitude" : {
+      "type" : "number",
+      "advanced" : true,
+      "names" : [ "NODE_PLACE/LAT", "LAT" ],
+      "values" : [ ]
+    },
+    "longitude" : {
+      "type" : "number",
+      "advanced" : true,
+      "names" : [ "NODE_PLACE/LON", "LON" ],
+      "values" : [ ]
+    },
+    "facts" : {
+      "type" : "record",
+      "advanced" : true,
+      "names" : [ "FACTS", "FACTS/*" ],
+      "values" : [ ]
+    }
+  },
+  "sunburst" : {
+    "allowMultipleDatabases" : true
+  },
+  "map" : {
+    "tileUrlTemplate" : null,
+    "enabled" : false,
+    "attribution" : null,
+    "locationFields" : [ {
+      "displayName" : "DefaultLocation",
+      "latitudeField" : "latitude",
+      "longitudeField" : "longitude",
+      "geoindexField" : null,
+      "iconName" : "hp-record",
+      "iconColor" : "white",
+      "markerColor" : "blue"
+    } ],
+    "resultsStep" : 2500,
+    "initialLocation" : {
+      "latitude" : 51.5074,
+      "longitude" : 0.1278
+    }
+  },
+  "trending" : {
+    "dateField" : "AUTN_DATE",
+    "defaultNumberOfBuckets" : 20,
+    "minNumberOfBuckets" : 3,
+    "maxNumberOfBuckets" : 100,
+    "numberOfValues" : 10
+  },
+  "themeTracker" : {
+    "category" : {
+      "protocol" : "HTTP",
+      "host" : "10.2.21.236",
+      "port" : 19120
+    },
+    "enabled" : true,
+    "databaseNames" : [ "News" ],
+    "minScore" : 50.0,
+    "jobName" : "BLACK_MDN_EVERYTHING_SG"
+  },
+  "combineMethod" : "Simple",
+  "minScore" : 0,
+  "statsServer" : {
+    "server" : {
+      "protocol" : "HTTP",
+      "host" : "localhost",
+      "port" : 19870
+    },
+    "enabled" : false
+  },
+  "topicMapMaxResults" : 1000,
+  "storedStateField" : null,
+  "documentSummaryMaxLength" : 250,
+  "export" : {
+    "powerpoint" : {
+      "templateFile" : "",
+      "marginTop" : null,
+      "marginLeft" : null,
+      "marginRight" : null,
+      "marginBottom" : null,
+      "enabled" : true
+    },
+    "enabled" : true
+  },
+  "search" : {
+    "defaultSortOption" : "relevance",
+    "sortOptions" : {
+      "relevance" : {
+        "sort" : "relevance",
+        "label" : null
+      },
+      "date" : {
+        "sort" : "date",
+        "label" : null
+      },
+      "reverseDate" : {
+        "sort" : "reversedate",
+        "label" : null
+      }
+    },
+    "spellCheck" : {
+      "enabled" : true
+    }
+  },
+  "users" : {
+    "relatedUsers" : {
+      "enabled" : false,
+      "interests" : {
+        "agentStoreProfilesDatabase" : "profile",
+        "namedArea" : "default",
+        "userDetailsFields" : [ ]
+      },
+      "expertise" : {
+        "agentStoreProfilesDatabase" : "profile",
+        "namedArea" : "experts",
+        "userDetailsFields" : [ ]
+      }
+    }
+  }
+}

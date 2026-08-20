@@ -1,0 +1,115 @@
+-- grok.lua
+-- Answer Server 25.3 RAG → Grok-4 using send_http_request + dkjson
+-- Uses ONLY built-in, officially supported libraries
+
+-- dkjson is the standard JSON library in Answer Server (always available)
+local json = require("dkjson")
+
+-- === CONFIGURATION ===
+local GROK_API_KEY = "YOUR_AI_LLM_PROVIDER_KEY"
+local API_URL = "https://api.x.ai/v1/chat/completions"
+local MODEL = "grok-4-fast-reasoning"
+
+-- === LOGGING TO YOUR CUSTOM FILE ===
+local LOG_FILE = "E:/Knowledge Discovery/AnswerServer/AnswerServer_25.2.0_WINDOWS_X86_64/logs/custom/grok_lua.log"
+local function log(msg)
+    local f = io.open(LOG_FILE, "a")
+    if f then
+        f:write(os.date("%Y-%m-%d %H:%M:%S") .. " | " .. tostring(msg) .. "\n")
+        f:close()
+    end
+end
+
+log("=== grok.lua loaded (dkjson version) ===")
+
+-- === GENERATE FUNCTION ===
+function generate(prompt, generation_utils)
+    log("generate() called – prompt length: " .. #prompt)
+
+    -- Build conversation history from session if available
+    local full_prompt = prompt
+    if generation_utils and generation_utils.session_data then
+        local session = generation_utils:session_data()
+        if session and #session > 0 then
+            local history = {}
+            for _, turn in ipairs(session) do
+                table.insert(history, "User: " .. (turn.question or "Unknown"))
+                table.insert(history, "Assistant: " .. (turn.answer or "Unknown"))
+            end
+            full_prompt = table.concat(history, "\n") .. "\n\nCurrent question:\n" .. prompt
+            log("Added session history (" .. #session .. " turns)")
+        end
+    end
+
+    -- Request payload
+    local payload = {
+        model = MODEL,
+        messages = {
+            {
+                role = "system",
+                content = "You are an expert Israel Railways electrical and traction engineer. Answer precisely using only the provided context from technical drawings."
+            },
+            {
+                role = "user",
+                content = full_prompt
+            }
+        },
+        temperature = 0.0,
+        max_tokens = 10000,
+        stream = false
+    }
+
+    local payload_json = json.encode(payload)
+
+    log("Sending request to Grok API...")
+    local ok, response = pcall(send_http_request, {
+        url = API_URL,
+        method = "POST",
+        headers = {
+            ["Content-Type"] = "application/json",
+            ["Authorization"] = "Bearer " .. GROK_API_KEY
+        },
+        content = payload_json,
+        section = "ContentSSL"   -- Uses your [ContentSSL] SSLMethod=Negotiate
+    })
+
+    if not ok then
+        log("HTTP REQUEST FAILED: " .. tostring(response))
+        return "Error: Could not connect to AI model. Please try again later."
+    end
+
+    if type(response) ~= "string" or response == "" then
+        log("Empty or invalid response from API")
+        return "Error: Empty response from AI model."
+    end
+
+    local success, result = pcall(json.decode, response)
+    if not success then
+        log("JSON decode failed: " .. response:sub(1, 1000))
+        return "Error: Invalid response format from AI model."
+    end
+
+    if not result.choices or not result.choices[1] or not result.choices[1].message then
+        log("No valid answer in response: " .. response:sub(1, 1000))
+        return "Error: AI model returned no answer."
+    end
+
+    local answer = result.choices[1].message.content or ""
+    log("Answer generated – length: " .. #answer)
+    return answer
+end
+
+-- === TOKEN COUNTER (required by Answer Server) ===
+function get_token_count(text, token_limit)
+    local words = {}
+    for word in text:gmatch("%S+") do
+        table.insert(words, word)
+    end
+
+    local count = #words
+    local limited_text = count <= token_limit and text or table.concat(words, " ", 1, token_limit)
+
+    return limited_text, count
+end
+
+log("grok.lua fully initialized – using dkjson + send_http_request")

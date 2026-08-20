@@ -1,0 +1,20 @@
+# Knowledge Discovery 26.2 Windows Installer - Python backend
+# Python 3.9+ recommended (3.8+ works)
+# Most functionality uses the standard library.
+# Optional but highly recommended for a polished CLI experience:
+
+rich>=13.0.0          # colored output, tables, progress, prompts
+colorama>=0.4.6       # Windows ANSI color support (rich uses it)
+certifi>=2024.0.0     # trusted CA bundle for downloads (WinSW/NiFi/VC++/Java);
+                       # fixes CERTIFICATE_VERIFY_FAILED on Windows Python installs
+                       # that don't have a working system CA bundle wired up
+
+# Optional for better Windows service integration (falls back to sc.exe + subprocess):
+# pywin32>=306
+
+# SSL certificate generation (tools/generate_ssl.py) — preferred over
+# Generate-SSL.ps1 on Windows (avoids OpenSSL CA index.txt CRLF failures):
+cryptography>=42.0.0
+
+# ----- Development / testing -----
+pytest>=7.0.0

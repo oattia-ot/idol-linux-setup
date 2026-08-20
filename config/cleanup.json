@@ -1,0 +1,100 @@
+{
+  "Description": "Declarative cleanup targets for clean-unnecessary.sh. Paths under Toolkit are relative to the installer folder (SetupPath). Paths under BasePath are relative to the install root from config (BasePath value only \u2014 never hardcode version folders). Services are systemd unit names to stop and delete.",
+  "BasePath": "",
+  "ToolkitFolders": [
+    "ssl",
+    "SSL",
+    ".pytest_cache",
+    "__pycache__"
+  ],
+  "ToolkitFiles": [
+    "ssl-passwords.txt",
+    "env/.idol-ssl-passwords.env",
+    "env/.idol-ssl-passwords.sh"
+  ],
+  "ToolkitGlobs": [
+    "**/__pycache__",
+    "**/*.pyc",
+    "**/*.pyo",
+    "**/Thumbs.db",
+    "**/desktop.ini",
+    "**/.DS_Store",
+    "*.log",
+    "nifi/nifi-connectors/*"
+  ],
+  "BasePathFolders": [
+    "logs",
+    "temp",
+    "tmp",
+    "_extract",
+    ".tmp",
+    "ssl",
+    "SSL"
+  ],
+  "BasePathFiles": [
+    "kd-state.json",
+    "kd-install-state.json"
+  ],
+  "BasePathGlobs": [
+    "kd-state*.json",
+    "kd-install-state*.json",
+    "*.log"
+  ],
+  "SystemdUnits": [
+    "licenseserver",
+    "content",
+    "community",
+    "agentstore",
+    "qmsagentstore",
+    "answerbankagentstore",
+    "conversationagentstore",
+    "category",
+    "qms",
+    "answerserver",
+    "statsserver",
+    "view",
+    "nifi",
+    "find",
+    "kd-licenseserver",
+    "kd-content",
+    "kd-community",
+    "kd-agentstore",
+    "kd-qmsagentstore",
+    "kd-answerbankagentstore",
+    "kd-conversationagentstore",
+    "kd-category",
+    "kd-qms",
+    "kd-answerserver",
+    "kd-statsserver",
+    "kd-view",
+    "kd-nifi",
+    "kd-find"
+  ],
+  "WindowsServices": [
+    "KD-LicenseServer",
+    "KD-Content",
+    "KD-Community",
+    "KD-Agentstore",
+    "KD-QMSAgentStore",
+    "KD-AnswerBankAgentStore",
+    "KD-ConversationAgentStore",
+    "KD-Category",
+    "KD-QMS",
+    "KD-AnswerServer",
+    "KD-StatsServer",
+    "KD-View",
+    "KD-NiFi",
+    "KD-Find",
+    "KD-Apache-NiFi",
+    "ApacheNifiService"
+  ],
+  "Options": {
+    "StopServicesBeforeDelete": true,
+    "DeleteToolkitTargets": true,
+    "DeleteBasePathTargets": true,
+    "DeleteSystemdUnits": false,
+    "DeleteWindowsServices": false,
+    "DeleteEntireBasePath": false,
+    "ServiceStopTimeoutSeconds": 45
+  }
+}
